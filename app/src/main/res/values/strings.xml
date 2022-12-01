@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Services Test</string>
+    <string name="service">SERVICE</string>
+    <string name="foreground_service">FOREGROUND SERVICE</string>
+    <string name="intent_service">INTENT SERVICE</string>
+    <string name="job_dispatcher">JOB DISPATCHER</string>
+    <string name="job_intent_service">JOB INTENT SERVICE</string>
+    <string name="work_manager">WORK MANAGER</string>
+    <string name="alarm_meneger">ALARM MENEGER</string>
+</resources>
