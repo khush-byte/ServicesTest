@@ -7,8 +7,7 @@ import android.os.IBinder
 import android.util.Log
 import kotlinx.coroutines.*
 
-class MyService: Service() {
-
+class MyService : Service() {
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     //Create service
@@ -20,14 +19,15 @@ class MyService: Service() {
     //Run services functions. This part use main flow
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         log("onStartCommand")
+        val start = intent?.getIntExtra(EXTRA_START, 0) ?: 0
         coroutineScope.launch {
-            for (i in 0 until 100){
+            for (i in start until start + 100) {
                 delay(1000)
                 log("Timer: $i")
             }
         }
-
-        return super.onStartCommand(intent, flags, startId)
+        //return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
     }
 
     //Kill service
@@ -38,17 +38,20 @@ class MyService: Service() {
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-            TODO("Not yet implemented")
+        TODO("Not yet implemented")
     }
 
-    private fun log(msg: String){
+    private fun log(msg: String) {
         Log.d("MyServices", "MyService: $msg")
     }
 
     //Fabric method
-    companion object{
-        fun newIntent(context: Context): Intent{
-            return Intent(context, MyService::class.java)
+    companion object {
+        private const val EXTRA_START = "start"
+        fun newIntent(context: Context, start: Int): Intent {
+            return Intent(context, MyService::class.java).apply {
+                putExtra(EXTRA_START, start)
+            }
         }
     }
 }
