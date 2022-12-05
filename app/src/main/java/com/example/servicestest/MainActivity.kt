@@ -1,11 +1,7 @@
 package com.example.servicestest
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.servicestest.databinding.ActivityMainBinding
 
@@ -27,6 +23,13 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.startForegroundService(
                 this,
                 MyForegroundService.newIntent(this)
+            )
+        }
+
+        binding.intentService.setOnClickListener{
+            ContextCompat.startForegroundService(
+                this,
+                MyIntentService.newIntent(this)
             )
         }
     }
