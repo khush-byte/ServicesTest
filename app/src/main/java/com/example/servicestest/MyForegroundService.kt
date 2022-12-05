@@ -1,6 +1,5 @@
 package com.example.servicestest
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
@@ -25,10 +24,11 @@ class MyForegroundService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         log("onStartCommand")
         coroutineScope.launch {
-            for (i in 0 until 100) {
+            for (i in 0 until 3) {
                 delay(1000)
                 log("Timer: $i")
             }
+            stopSelf()
         }
         return START_STICKY
     }
@@ -47,7 +47,7 @@ class MyForegroundService : Service() {
         Log.d("MyServices", "MyForegroundService: $msg")
     }
 
-    private fun createNotificationChannel(){
+    private fun createNotificationChannel() {
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
@@ -60,14 +60,14 @@ class MyForegroundService : Service() {
     }
 
     private fun createNotification() = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("Test service")
-            .setContentText("Test Service ia active")
-            .setSmallIcon(R.drawable.ic_baseline_beach_access)
-            .build()
+        .setContentTitle("Test service")
+        .setContentText("Test Service ia active")
+        .setSmallIcon(R.drawable.ic_baseline_beach_access)
+        .build()
 
     companion object {
         private const val CHANNEL_ID = "channel_id"
-        private const val CHANNEL_NAME = "channel_name2"
+        private const val CHANNEL_NAME = "channel_name"
         private const val NOTIFICATION_ID = 1
 
         fun newIntent(context: Context): Intent {
