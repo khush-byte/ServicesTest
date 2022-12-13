@@ -7,4 +7,5 @@
     <string name="job_intent_service">JOB INTENT SERVICE</string>
     <string name="work_manager">WORK MANAGER</string>
     <string name="alarm_meneger">ALARM MENEGER</string>
+    <string name="job_scheduler">JOB SCHEDULER</string>
 </resources>
