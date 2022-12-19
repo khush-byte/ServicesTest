@@ -68,12 +68,12 @@
             android:layout_height="0dp"
             android:backgroundTint="#4CB6E8"
             android:text="@string/job_scheduler"
-            app:layout_constraintBottom_toTopOf="@+id/job_intent_dispatcher"
+            app:layout_constraintBottom_toTopOf="@+id/job_intent_service"
             app:layout_constraintTop_toBottomOf="@+id/intent_service"
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/job_intent_dispatcher"
+            android:id="@+id/job_intent_service"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:backgroundTint="#4CB6E8"
@@ -89,7 +89,7 @@
             android:backgroundTint="#4CB6E8"
             android:text="@string/alarm_meneger"
             app:layout_constraintBottom_toTopOf="@+id/work_manager"
-            app:layout_constraintTop_toBottomOf="@+id/job_intent_dispatcher"
+            app:layout_constraintTop_toBottomOf="@+id/job_intent_service"
             tools:ignore="TextContrastCheck" />
 
         <Button
